@@ -17,15 +17,13 @@ Route::get('/', function () {
 
 Route::get('/admin', function () {
     return view('admin.index');
-});
-
-
-Route::get('/test', function () {
-    return view('admin.layouts.master');
-});
+})->name('admin.index');
 
 Route::get('/admin/loaisanpham', function () {
     return view('admin.pages.table.listproductline');
 })->name('productline.index');
 
-Route::get('/admin/loaisanpham/create','Home\HomeController@create')->name('productline.create');
+Route::get('/admin/sanpham', function () {
+    return view('admin.pages.table.listproduct');
+})->name('product.index');
+

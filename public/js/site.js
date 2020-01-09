@@ -12,7 +12,7 @@ productline.drawTable = function(){
                         "<td>"+ value.id + "</td>" +
                         "<td>" + value.name + "</td>" +
                         "<td>" +  value.textDescription + "</td>" +
-                        "<td>" + value.iamge + "</td>" +
+                        "<td>" + "<img class='img-product' src='/productline/"+ value.image + "'>" + "</td>" +
                         "<td>" + 
                             "<a href='javascript:;' onclick=productline.getDetail(" + value.id + ")><i class='fa fa-edit'></i></a> " +
                             "<a href='javascript:;' onclick=productline.delete(" + value.id + ")><i class='fa fa-trash'></i></a>" +
@@ -30,8 +30,6 @@ productline.save = function(){
             dataObj.name = $('#name').val();
             dataObj.textDescription = $('#textDescription').val();
             dataObj.image = $('#image').val();
-            productline.readFile();
-            document.getElementById("image").addEventListener("change", productline.readFile());
             $.ajax({
                 url: '/api/admin/loaisanpham/',
                 method: 'POST',
@@ -62,19 +60,7 @@ productline.save = function(){
         }
     }
 };
-productline.readFile = function () {
-  
-    if (this.files && this.files[0]) {
-      
-      var FR= new FileReader();
-      
-      FR.addEventListener("load", function(e) {
-        document.getElementById("img").src       = e.target.result;
-        document.getElementById("b64").innerHTML = e.target.result;
-      }); 
-      FR.readAsDataURL( this.files[0] );
-    }
-}
+
 
 productline.openAddEditUser = function(){
     productline.resetForm();
@@ -111,7 +97,7 @@ productline.getDetail = function (id) {
 
 productline.delete = function (id) {
     bootbox.confirm({
-        message: "Are you sure to delete this user?",
+        message: "Are you sure to delete this product?",
         buttons: {
             confirm: {
                 label: 'Yes',

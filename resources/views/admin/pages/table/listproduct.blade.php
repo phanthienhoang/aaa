@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Hi vọng sẽ giàu</h1>
+            <h1>Hi Vọng sẽ giàu</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -26,39 +26,49 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Sống chết có số, giàu sang tại trời</h3>
+              <h3 class="card-title">Muốn thấy tương lai , thì xem hiện tại</h3>
             </div>
             {{-- thêm mới --}}
             <div class="card-body">
               <div class="col-12 mb-3">
                 <a href="javascript:void(0);" class="btn btn-info"
-                   onclick="productline.openAddEditUser()">Create</a>
+                   onclick="product.openAddEditUser()">Create</a>
               </div>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>stt</th>
                   <th>tên</th>
+                  <th>loại sản phẩm</th>
+                  <th>quy mô</th>
+                  <th>nhà sản suất</th>
                   <th>mô tả</th>
+                  <th>số lượng</th>
+                  <th>đơn giá</th>
+                  <th>MSRP</th>
                   <th>ảnh</th>
                   <th>action</th>
                 </tr>
                 </thead>
-                <tbody id="tbProducLine">
+                <tbody id="tbProduct">
                   {{-- đỗ dữ liệu --}}
                 </tbody>
                 <tfoot>
-                <tr>
-                  <th>stt</th>
+                 <tr>
                   <th>tên</th>
+                  <th>loại sản phẩm</th>
+                  <th>quy mô</th>
+                  <th>nhà sản suất</th>
                   <th>mô tả</th>
+                  <th>số lượng</th>
+                  <th>đơn giá</th>
+                  <th>MSRP</th>
                   <th>ảnh</th>
                   <th>action</th>
                 </tr>
                 </tfoot>
               </table>
             </div>
-            @include('admin.pages.form.createProductLine')
+            @include('admin.pages.form.createProduct')
           </div>
         </div>
       </div>
@@ -66,5 +76,5 @@
   </div>
 @endsection
 @section('footerJavascript')
-      <script src="/js/site.js"></script>
+      <script src="/js/product.js"></script>
 @endsection

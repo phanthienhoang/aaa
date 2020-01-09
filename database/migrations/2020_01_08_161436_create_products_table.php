@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->integer('quantityInStock');
             $table->decimal('buyPrice');
             $table->decimal('MSRP');
+            $table->string('image');
             $table->timestamps();
             $table->foreign('productLineId')->references('id')->on('product_lines')->onDelete('cascade');
         });

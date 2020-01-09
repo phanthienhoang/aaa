@@ -1,6 +1,6 @@
 <div id="addEditUser" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
-      <form id="frmAddEditUser">
+      <form id="frmAddEditUser" enctype="multipart/form-data">
           <!-- Modal content-->
           <div class="modal-content">
               <div class="modal-header">
@@ -11,7 +11,7 @@
               <div class="modal-body">
                   <div class="row form-group">
                       <div class="col-4">
-                          <label>Tên Loại Sản Phẩm</label>
+                          <label>Sản Phẩm</label>
                       </div>
                       <div class="col-8">
                           <input type="text" id="name" name="name"
@@ -26,16 +26,16 @@
                           {{-- <div class="col-8">
                               <input type="text" id="image" name="image" class="form-control" data-rule-required="true">
                           </div> --}}
-                          <input id="image" type='file' name="image"  data-rule-required="true">
-                          <p id="b64"></p>
-                          <img id="img" height="150">
-                      </div>
+                          <div class="col-8">
+                          <input id="image" type='text' name="image"  data-rule-required="true">
+                        </div>
+                    </div>
                   <div class="row form-group">
                           <div class="col-4">
-                              <label>UserMobile</label>
+                              <label>Mô tả</label>
                           </div>
                           <div class="col-8">
-                              <input type="text" id="textDescription" name="textDescription" class="form-control" data-rule-required="true">
+                              <textarea type="text" id="textDescription" name="textDescription" class="form-control" data-rule-required="true"></textarea>
                           </div>
                   </div>
               </div>
