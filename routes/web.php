@@ -27,3 +27,6 @@ Route::get('/admin/sanpham', function () {
     return view('admin.pages.table.listproduct');
 })->name('product.index');
 
+Route::get('/admin/dondathang', function () {
+    return view('admin.pages.table.listorder');
+})->name('order.index');
