@@ -7,6 +7,7 @@
                 <h4 class="modal-title">Create New User</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
+            <div id="flash" style="text-align:center ; color:green" ></div>
             <input hidden id="Id" name="Id">
             <div class="modal-body">
                 <div style="text-align:center">
@@ -17,7 +18,9 @@
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput2">loại sản phẩm</label>
-                            <input type="number" class="form-control" id="productLineId" name="productLineId" placeholder="Another input">
+                            <select class="form-control" id="Roles" ></select>
+                            {{-- <input type="number" id='productLineId'  , name="productLineId"> --}}
+                            
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput2">quy mô</label>
@@ -46,7 +49,7 @@
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput2">MSRP</label>
-                            <input type="decimal" class="form-control" id="MSRP" name="MSRP" placeholder="Another input">
+                            <input type="number" class="form-control" id="MSRP" name="MSRP" placeholder="Another input">
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput2">Hình ảnh</label>

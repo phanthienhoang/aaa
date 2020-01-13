@@ -38,6 +38,7 @@ productline.save = function(){
                 contentType: 'application/json',
                 success: function (data) {
                     $('#addEditModel').modal('hide');
+                    $("#flash").append("<h4>" +' thêm mới ' + dataObj.productName + ' thành công' + "</h4>");
                     productline.drawTable();
                 }
             });
@@ -54,6 +55,7 @@ productline.save = function(){
                 contentType: 'application/json',
                 success: function (data) {
                     $('#addEditModel').modal('hide');
+                    $("#flash").append("<h4>" +' thêm mới ' + dataObj.productName + ' thành công' + "</h4>");
                     productline.drawTable();
                 }
             });

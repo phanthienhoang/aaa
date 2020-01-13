@@ -7,6 +7,7 @@
                   <h4 class="modal-title">Create New User</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
+              <div id="flash" style="text-align:center ; color:green" ></div>
               <input hidden id="Id" name="Id">
               <div class="modal-body">
                   <div class="row form-group">

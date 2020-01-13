@@ -1,17 +1,17 @@
 var product = product || {};
+
 product.drawTable = function(){
     $.ajax({
         url:'/api/admin/sanpham/',
         method : 'GET',
         dataType : 'json',
         success : function(data){
-            console.log(data);
             $('#tbProduct').empty();
             $.each(data, function(index, value){
                 $('#tbProduct').append(
                     "<tr>"+
                         "<td>" + value.productName + "</td>" +
-                        "<td>" + value.productLineId + "</td>" +
+                        "<td>" + value.productLineId+ "</td>" +
                         "<td>" + value.productScale + "</td>" +
                         "<td>" + value.productVendor + "</td>" +
                         "<td>" + value.productDescription + "</td>" +
@@ -29,12 +29,30 @@ product.drawTable = function(){
         }
     });
 };
+
+product.initProduct = function (roles) {
+    $.ajax({
+        url: '/api/admin/loaisanpham/',
+        method: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (data) {
+            console.log(data);  
+                $("#Roles").empty();
+                $.each(data, function (index, value) {
+                    $("#Roles").append("<option " + ($.inArray(value.id, roles) !== -1 ? 'selected' : '') + " value=" + value.id + " >" + value.name + "</option>");
+            });
+        }
+    });
+};
+
+
 product.save = function(){
     if($('#frmAddEditUser').valid()){
         var dataObj = {};
         if($('#Id').val() == 0){
             dataObj.productName = $('#productName').val();
-            dataObj.productLineId = $('#productLineId').val();
+            dataObj.productLineId = $('#Roles').val();
             dataObj.productScale = $('#productScale').val();
             dataObj.productVendor = $('#productVendor').val();
             dataObj.productDescription = $('#productDescription').val();
@@ -50,12 +68,14 @@ product.save = function(){
                 contentType: 'application/json',
                 success: function (data) {
                     $('#addEditModel').modal('hide');
+                    $("#flash").append("<h4>" +' thêm mới ' + dataObj.productName + ' thành công' + "</h4>");
+                    product.resetForm();
                     product.drawTable();
                 }
             });
         }else{
             dataObj.productName = $('#productName').val();
-            dataObj.productLineId = $('#productLineId').val();
+            dataObj.productLineId = $('#Roles').val();
             dataObj.productScale = $('#productScale').val();
             dataObj.productVendor = $('#productVendor').val();
             dataObj.productDescription = $('#productDescription').val();
@@ -72,6 +92,8 @@ product.save = function(){
                 contentType: 'application/json',
                 success: function (data) {
                     $('#addEditModel').modal('hide');
+                    $("#flash").append("<h4>" +'update ' + dataObj.productName + ' thành công' + "</h4>");
+                    product.resetForm();
                     product.drawTable();
                 }
             });
@@ -80,15 +102,15 @@ product.save = function(){
 };
 
 product.resetForm = function () {
-    $('#productName').val();
-    $('#productLineId').val();
-    $('#productScale').val();
-    $('#productVendor').val();
-    $('#productDescription').val();
-    $('#quantityInStock').val();
-    $('#buyPrice').val();
-    $('#MSRP').val();
-    $('#image').val();
+    $('#productName').val('');
+    product.initProduct();
+    $('#productScale').val('');
+    $('#productVendor').val('');
+    $('#productDescription').val('');
+    $('#quantityInStock').val('');
+    $('#buyPrice').val('');
+    $('#MSRP').val('');
+    $('#image').val('');
     $('#Id').val(0);
     $('#addEditModel').find('.modal-title').text('Create New User');
     $("#frmAddEditUser").validate().resetForm();
@@ -108,7 +130,7 @@ product.getDetail = function (id) {
         contentType: 'application/json',
         success: function (data) {
             $('#productName').val(data.productName);
-            $('#productLineId').val(data.productLineId);
+            $('#Roles').val(data.productLineId);
             $('#productScale').val(data.productScale);
             $('#productVendor').val(data.productVendor);
             $('#productDescription').val(data.productDescription);
@@ -154,6 +176,7 @@ product.delete = function (id) {
 
 product.init =function () {
     product.drawTable();
+    product.initProduct([]);
 };
 
 $(document).ready(function () {
